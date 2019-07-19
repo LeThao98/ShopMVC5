@@ -20,7 +20,10 @@ namespace TeduShop.Model.Models
 
         public int CategoryID { get; set; }
         public string Image { get; set; }
-        public XElement MoreImages { get; set; }
+
+        [Column(TypeName = "XML")]
+        public string MoreImages { get; set; }
+
         public decimal Price { get; set; }
         public decimal? PromotionPrice { get; set; }
         public int? Warranty { get; set; }
