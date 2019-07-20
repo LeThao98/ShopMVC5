@@ -19,6 +19,8 @@ namespace TeduShop.Service
         IEnumerable<PostCategory> GetAllByParentID(int parentId);
 
         PostCategory GetById(int id);
+
+        void Save();
     }
 
     public class PostCategoryService : IPostCategoryService
@@ -57,9 +59,14 @@ namespace TeduShop.Service
             throw new NotImplementedException();
         }
 
-        public void Update(PostCategory postCategory)
+        public void Save()
         {
             throw new NotImplementedException();
+        }
+
+        public void Update(PostCategory postCategory)
+        {
+            _unitOfWork.Commit();
         }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories;
 using TeduShop.Model.Models;
@@ -49,11 +46,12 @@ namespace TeduShop.UnitTest.ServiceTest
         [TestMethod]
         public void PostCategory_Service_Create()
         {
-            PostCategory category = new PostCategory();
-            category.Name = "Test";
-            category.Alias = "test";
-            category.Status = true;
-
+            PostCategory category = new PostCategory()
+            {
+                Name = "Test",
+                Alias = "test",
+                Status = true
+            };
             _mockRepository.Setup(m => m.Add(category)).Returns((PostCategory p) =>
             {
                 p.ID = 1;

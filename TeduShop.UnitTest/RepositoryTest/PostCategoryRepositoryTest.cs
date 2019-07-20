@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories;
 using TeduShop.Model.Models;
@@ -25,13 +23,17 @@ namespace TeduShop.UnitTest.RepositoryTest
         [TestMethod]
         public void PostCategory_Repository_Create()
         {
-            PostCategory category = new PostCategory();
-            category.Name = "Tets category";
-            category.Alias = "test-category";
-            category.Status = true;
+            PostCategory category = new PostCategory()
+            {
+                Name = "Tets category",
+                Alias = "test-category",
+                Status = true
+            };
 
             var result = _objRepository.Add(category);
             _unitOfWork.Commit();
+
+            Assert.AreEqual("", result);
         }
     }
 }
