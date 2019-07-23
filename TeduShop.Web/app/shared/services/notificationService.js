@@ -11,9 +11,11 @@
             "timeOut": 3000,
             "extendedTimeOut": 1000
         };
+
         function displaySuccess(message) {
             toastr.success(message);
         }
+
         function displayError(error) {
             if (Array.isArray(error)) {
                 error.each(function (err) {
@@ -24,12 +26,14 @@
                 toastr.error(error);
             }
         }
+
         function displayWarning(message) {
             toastr.warning(message);
         }
         function displayInfo(message) {
             toastr.info(message);
         }
+
         return {
             displaySuccess: displaySuccess,
             displayError: displayError,

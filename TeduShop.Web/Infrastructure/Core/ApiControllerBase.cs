@@ -12,7 +12,7 @@ namespace TeduShop.Web.Infrastructure.Core
 {
     public class ApiControllerBase : ApiController
     {
-        private readonly IErrorService _errorService;
+        private IErrorService _errorService;
 
         public ApiControllerBase(IErrorService errorService)
         {
@@ -30,10 +30,10 @@ namespace TeduShop.Web.Infrastructure.Core
             {
                 foreach (var eve in ex.EntityValidationErrors)
                 {
-                    Trace.WriteLine($"Entity of type \" {eve.Entry.Entity.GetType().Name} \" has the following validation errors: \" {eve.Entry.State} \"");
+                    Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error.");
                     foreach (var ve in eve.ValidationErrors)
                     {
-                        Trace.WriteLine($"- Property: \" {ve.PropertyName}\" , Error: \" {ve.ErrorMessage} \"");
+                        Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
                     }
                 }
                 LogError(ex);
@@ -42,7 +42,7 @@ namespace TeduShop.Web.Infrastructure.Core
             catch (DbUpdateException dbEx)
             {
                 LogError(dbEx);
-                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, dbEx.Message);
+                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, dbEx.InnerException.Message);
             }
             catch (Exception ex)
             {
@@ -56,12 +56,10 @@ namespace TeduShop.Web.Infrastructure.Core
         {
             try
             {
-                Error error = new Error()
-                {
-                    CreatedDate = DateTime.Now,
-                    Message = ex.Message,
-                    StackTrace = ex.StackTrace
-                };
+                Error error = new Error();
+                error.CreatedDate = DateTime.Now;
+                error.Message = ex.Message;
+                error.StackTrace = ex.StackTrace;
                 _errorService.Create(error);
                 _errorService.Save();
             }

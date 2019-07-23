@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace TeduShop.Web.Models
 {
     public class ProductCategoryViewModel
     {
         public int ID { set; get; }
+
+        [Required]
         public string Name { set; get; }
 
+        [Required]
         public string Alias { set; get; }
+
         public string Description { set; get; }
 
         public int? ParentID { set; get; }
@@ -34,6 +37,7 @@ namespace TeduShop.Web.Models
 
         public string MetaDescription { set; get; }
 
+        [Required]
         public bool Status { set; get; }
     }
 }

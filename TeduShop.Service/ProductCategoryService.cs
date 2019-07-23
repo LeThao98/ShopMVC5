@@ -71,7 +71,7 @@ namespace TeduShop.Service
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
 
         public void Update(ProductCategory productCategory)
