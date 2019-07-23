@@ -23,12 +23,12 @@ namespace TeduShop.Web.Api
             this._productCategoryService = ProductCategoryService;
         }
 
-        public HttpResponseMessage GetAll(HttpRequestMessage request, int page, int pageSize)
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize)
         {
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
-                var model = _productCategoryService.GetAll();
+                var model = _productCategoryService.GetAll(keyword);
                 totalRow = model.Count();
                 var query = model.OrderByDescending(x => x.CreatedTime).Skip(page * pageSize).Take(pageSize);
                 var responseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(query);
