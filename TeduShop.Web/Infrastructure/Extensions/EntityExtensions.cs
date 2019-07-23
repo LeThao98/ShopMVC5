@@ -20,9 +20,9 @@ namespace TeduShop.Web.Infrastructure.Extensions
             postCategory.Image = postCategoryVm.Image;
             postCategory.HomeFlag = postCategoryVm.HomeFlag;
 
-            postCategory.CreatedTime = postCategoryVm.CreatedDate;
+            postCategory.CreatedTime = postCategoryVm.CreatedTime;
             postCategory.CreatedBy = postCategoryVm.CreatedBy;
-            postCategory.UpdatedTime = postCategoryVm.UpdatedDate;
+            postCategory.UpdatedTime = postCategoryVm.UpdatedTime;
             postCategory.UpdatedBy = postCategoryVm.UpdatedBy;
             postCategory.MetaKeyword = postCategoryVm.MetaKeyword;
             postCategory.MetaDescription = postCategoryVm.MetaDescription;
@@ -41,9 +41,9 @@ namespace TeduShop.Web.Infrastructure.Extensions
             post.HomeFlag = postVm.HomeFlag;
             post.ViewCount = postVm.ViewCount;
 
-            post.CreatedTime = postVm.CreatedDate;
+            post.CreatedTime = postVm.CreatedTime;
             post.CreatedBy = postVm.CreatedBy;
-            post.UpdatedTime = postVm.UpdatedDate;
+            post.UpdatedTime = postVm.UpdatedTime;
             post.UpdatedBy = postVm.UpdatedBy;
             post.MetaKeyword = postVm.MetaKeyword;
             post.MetaDescription = postVm.MetaDescription;
