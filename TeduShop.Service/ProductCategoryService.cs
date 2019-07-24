@@ -66,7 +66,7 @@ namespace TeduShop.Service
 
         public ProductCategory GetById(int id)
         {
-            throw new NotImplementedException();
+            return _productCategoryRepository.GetSingleById(id);
         }
 
         public void Save()
